@@ -13,14 +13,24 @@
 - закрытие соединения с БД
 """
 
+import asyncio
+import models
+from jsonplaceholder_requests import fetch_posts, fetch_users
+
+
 
 async def async_main():
-    pass
+    await models.create_tables()
+    users_data, posts_data = await asyncio.gather(
+        fetch_users(),
+        fetch_posts(),
+    )
+    await models.add_users_(users_data)
+    await models.add_posts_(posts_data)
 
 
 def main():
-    pass
+    asyncio.run(async_main())
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
