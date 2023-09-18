@@ -10,4 +10,4 @@ def get_index():
 
 @app.get("/about/", endpoint="about")
 def get_about():
-    return render_template("base.html")
+    return render_template("/lists/about.html")
