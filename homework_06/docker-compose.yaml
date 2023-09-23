@@ -7,7 +7,7 @@ services:
       context: ./
     environment:
       CONFIG_CLASS: ProductionConfig
-      SQLALCHEMY_DATABASE_URI: postgresql://username:passwd@pg:5432/blog
+      SQLALCHEMY_DATABASE_URI: postgresql://username:passwd@pg:5432/hw6
     ports:
       - "8080:80"
     depends_on:
@@ -20,7 +20,7 @@ services:
       context: ./
     environment:
       CONFIG_CLASS: DevelopmentConfig
-      SQLALCHEMY_DATABASE_URI: postgresql://username:passwd@pg:5432/blog
+      SQLALCHEMY_DATABASE_URI: postgresql://username:passwd@pg:5432/hw6
 
     volumes:
       - ./:/app
