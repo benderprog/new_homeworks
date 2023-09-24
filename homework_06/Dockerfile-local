@@ -1,13 +1,3 @@
-# img 1
-# prepare req.txt
-
-
-# img 2
-# copy from img1 req.txt
-# install dep...
-
-# one image for all
-
 FROM python:3.11.4-bullseye
 
 WORKDIR /app
