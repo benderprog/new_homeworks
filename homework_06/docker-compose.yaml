@@ -7,7 +7,7 @@ services:
       context: ./
     environment:
       CONFIG_CLASS: ProductionConfig
-      SQLALCHEMY_DATABASE_URI: postgresql://username:passwd@pg:5432/hw6
+      SQLALCHEMY_DATABASE_URI: postgresql://username:passwd@pg:5432/blog
     ports:
       - "8080:80"
     depends_on:
@@ -20,7 +20,7 @@ services:
       context: ./
     environment:
       CONFIG_CLASS: DevelopmentConfig
-      SQLALCHEMY_DATABASE_URI: postgresql://username:passwd@pg:5432/hw6
+      SQLALCHEMY_DATABASE_URI: postgresql://username:passwd@pg:5432/blog
 
     volumes:
       - ./:/app
@@ -29,13 +29,17 @@ services:
 
   pg:
     image: postgres
-    environment:
-      POSTGRES_DB: hw6
-      POSTGRES_USER: username
-      POSTGRES_PASSWORD: passwd
-      PGDATA: /var/lib/postgresql/data/pgdata
-    ports:
-      - "5432:5432"
+    env_file:
+      - ./pg.env
+#    environment:
+#      POSTGRES_DB: blog
+#      POSTGRES_USER: username
+#      POSTGRES_PASSWORD: passwd
+#      PGDATA: /var/lib/postgresql/data/pgdata
+#      PGUSER: postgres
+#      user: postgres
+#    ports:
+#      - "5432:5432"
     volumes:
       - db-data:/var/lib/postgresql/data/pgdata
     healthcheck:
